@@ -7,6 +7,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
+import {MatButtonModule} from "@angular/material/button";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -37,6 +38,7 @@ import {CategoriaReadComponent} from './components/views/categoria/categoria-rea
         MatIconModule,
         MatCardModule,
         MatTableModule,
+        MatButtonModule,
         HttpClientModule,
     ],
     providers: [],
