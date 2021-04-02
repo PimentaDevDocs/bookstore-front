@@ -21,12 +21,12 @@ export class CategoriaCreateComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    create = () => {
+    create = (): void => {
         let erros: string = '';
         this.categoriaService.create(this.categoria).subscribe(() => {
                 this.categoriaService.message('Categoria criada com sucesso !')
                 setTimeout(() => {
-                    this.router.navigate(['/categorias'])
+                    this.router.navigateByUrl('/categorias')
                 }, 500)
             }, err => {
                 for (let i = 0; i < err.error.errors.length; i++) {
@@ -35,6 +35,10 @@ export class CategoriaCreateComponent implements OnInit {
                 this.categoriaService.message(erros)
             }
         )
+    }
+
+    cancel = (): void => {
+        this.router.navigateByUrl('/categorias')
     }
 
 }

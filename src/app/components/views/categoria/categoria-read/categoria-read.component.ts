@@ -23,12 +23,17 @@ export class CategoriaReadComponent implements OnInit {
 
     findAll = () => {
         this.categoriaService.findAll().subscribe(data => {
-            console.log(data)
             this.categorias = data
         })
     }
 
     navegarParaCategoriaCreate = () => {
-        this.router.navigate(["categorias/create"])
+        this.router.navigateByUrl('categorias/create')
+    }
+
+    delete = (categoria: CategoriaModel) => {
+        this.router.navigateByUrl('/categorias/delete', {
+            state: {categoria: categoria}
+        })
     }
 }

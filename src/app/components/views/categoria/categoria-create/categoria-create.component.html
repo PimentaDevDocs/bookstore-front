@@ -5,30 +5,32 @@
         <mat-label>
             Nome
         </mat-label>
-        <input [(ngModel)]="categoria.nome" matInput type="text" name="nome"
-               placeholder="Ex. Computação">
+        <input [(ngModel)]="categoria.nome" matInput name="nome"
+               placeholder="Ex. Computação"
+               type="text">
     </mat-form-field>
 
     <mat-form-field class="form">
         <mat-label>
             Descrição
         </mat-label>
-        <textarea [(ngModel)]="categoria.descricao" matInput type="text" name="descricao"
-                  placeholder="Ex. Livros de computação...">
+        <textarea [(ngModel)]="categoria.descricao" matInput name="descricao"
+                  placeholder="Ex. Livros de computação..."
+                  type="text">
         </textarea>
     </mat-form-field>
 
     <div class="buttons">
 
-        <button
-                (click)="create()"
-                mat-stroked-button
+        <button (click)="create()"
+                class="mat-elevation-z8"
                 color="primary"
-                class="mat-elevation-z8">Criar
+                mat-stroked-button>Criar
         </button>
-        <button mat-stroked-button
+        <button (click)="cancel()"
+                class="mat-elevation-z8"
                 color="war"
-                class="mat-elevation-z8">Cancelar
+                mat-stroked-button>Cancelar
         </button>
 
     </div>
