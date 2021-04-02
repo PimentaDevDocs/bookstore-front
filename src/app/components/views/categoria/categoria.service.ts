@@ -20,6 +20,18 @@ export class CategoriaService {
         return this.httpClient.get<CategoriaModel[]>(url)
     }
 
+    findById = (id: string): Observable<CategoriaModel> => {
+
+        const url = `${this.baseURL}/categorias/${id}`
+        return this.httpClient.get<CategoriaModel>(url);
+    }
+
+    delete = (id: string): Observable<void> => {
+        const url = `${this.baseURL}/categorias/${id}`;
+        return this.httpClient.delete<void>(url);
+    }
+
+
     create = (categoria: CategoriaModel): Observable<CategoriaModel> => {
         const url = `${this.baseURL}/categorias`
         return this.httpClient.post<CategoriaModel>(url,
