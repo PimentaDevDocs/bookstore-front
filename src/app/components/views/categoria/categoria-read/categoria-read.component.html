@@ -44,7 +44,7 @@
                     Ações
                 </th>
                 <td *matCellDef="let row" mat-cell>
-                    <a class="edit" href="#">
+                    <a (click)="edit(row)" class="edit">
                         <i class="material-icons">edit</i>
                     </a>
                     <a (click)="delete(row)" class="delete">

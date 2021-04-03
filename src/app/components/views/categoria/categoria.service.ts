@@ -15,6 +15,20 @@ export class CategoriaService {
     constructor(private httpClient: HttpClient, private _snack: MatSnackBar) {
     }
 
+    message = (str: string): void => {
+        this._snack.open(`${str}`, 'OK', {
+            horizontalPosition: "end",
+            verticalPosition: "top",
+            duration: 3000
+        })
+    }
+
+    create = (categoria: CategoriaModel): Observable<CategoriaModel> => {
+        const url = `${this.baseURL}/categorias`
+        return this.httpClient.post<CategoriaModel>(url,
+            categoria)
+    }
+
     findAll = (): Observable<CategoriaModel[]> => {
         const url = `${this.baseURL}/categorias`;
         return this.httpClient.get<CategoriaModel[]>(url)
@@ -26,23 +40,14 @@ export class CategoriaService {
         return this.httpClient.get<CategoriaModel>(url);
     }
 
-    delete = (id: string): Observable<void> => {
-        const url = `${this.baseURL}/categorias/${id}`;
-        return this.httpClient.delete<void>(url);
-    }
-
-
-    create = (categoria: CategoriaModel): Observable<CategoriaModel> => {
+    update = (categoria: CategoriaModel): Observable<CategoriaModel> => {
         const url = `${this.baseURL}/categorias`
-        return this.httpClient.post<CategoriaModel>(url,
+        return this.httpClient.put<CategoriaModel>(url,
             categoria)
     }
 
-    message = (str: string): void => {
-        this._snack.open(`${str}`, 'OK', {
-            horizontalPosition: "end",
-            verticalPosition: "top",
-            duration: 3000
-        })
+    delete = (id: string): Observable<void> => {
+        const url = `${this.baseURL}/categorias/${id}`;
+        return this.httpClient.delete<void>(url);
     }
 }

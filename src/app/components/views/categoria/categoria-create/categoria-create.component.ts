@@ -26,7 +26,7 @@ export class CategoriaCreateComponent implements OnInit {
         this.categoriaService.create(this.categoria).subscribe(() => {
                 this.categoriaService.message('Categoria criada com sucesso !')
                 setTimeout(() => {
-                    this.router.navigateByUrl('/categorias')
+                    this.cancel()
                 }, 500)
             }, err => {
                 for (let i = 0; i < err.error.errors.length; i++) {

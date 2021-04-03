@@ -36,4 +36,10 @@ export class CategoriaReadComponent implements OnInit {
             state: {categoria: categoria}
         })
     }
+
+    edit = (categoria: CategoriaModel) => {
+        this.router.navigateByUrl('/categorias/update', {
+            state: {categoria: categoria}
+        })
+    }
 }
