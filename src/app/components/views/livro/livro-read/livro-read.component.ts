@@ -12,19 +12,21 @@ export class LivroReadComponent implements OnInit {
 
     livros: LivroModel[] = []
 
+    id: string = '';
+
     displayedColumns: string[] = ['id', 'titulo', 'livros', 'acoes']
 
     constructor(private router: Router, private route: ActivatedRoute, private livroService: LivroService) {
     }
 
     ngOnInit(): void {
-
+        this.id = this.route.snapshot.paramMap.get('id')!
         this.findAll()
     }
 
     findAll = () => {
 
-        this.livroService.findAllByCategoria(this.route.snapshot.paramMap.get('id')!)
+        this.livroService.findAllByCategoria(this.id)
             .subscribe(data => {
                 this.livros = data
                 console.log(this.livros)
@@ -38,5 +40,9 @@ export class LivroReadComponent implements OnInit {
 
     delete(row: LivroModel) {
 
+    }
+
+    addLivro = (): void => {
+        this.router.navigateByUrl(`categorias/${this.id}/livros/create`)
     }
 }

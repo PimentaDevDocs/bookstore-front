@@ -10,8 +10,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -26,6 +26,7 @@ import {CategoriaCreateComponent} from './components/views/categoria/categoria-c
 import {CategoriaDeleteComponent} from './components/views/categoria/categoria-delete/categoria-delete.component';
 import {CategoriaUpdateComponent} from './components/views/categoria/categoria-update/categoria-update.component';
 import {LivroReadComponent} from './components/views/livro/livro-read/livro-read.component';
+import {LivroCreateComponent} from './components/views/livro/livro-create/livro-create.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import {LivroReadComponent} from './components/views/livro/livro-read/livro-read
         CategoriaCreateComponent,
         CategoriaDeleteComponent,
         CategoriaUpdateComponent,
-        LivroReadComponent
+        LivroReadComponent,
+        LivroCreateComponent
     ],
     imports: [
         BrowserModule,
@@ -46,6 +48,7 @@ import {LivroReadComponent} from './components/views/livro/livro-read/livro-read
         FormsModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        ReactiveFormsModule,
         MatToolbarModule,
         MatSidenavModule,
         MatListModule,
