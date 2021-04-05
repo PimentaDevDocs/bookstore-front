@@ -29,12 +29,14 @@ export class LivroReadComponent implements OnInit {
         this.livroService.findAllByCategoria(this.id)
             .subscribe(data => {
                 this.livros = data
-                console.log(this.livros)
             })
 
     }
 
-    edit(row: LivroModel) {
+    edit(livro: LivroModel) {
+        this.router.navigateByUrl('livros/update', {
+            state: {livro: livro}
+        })
 
     }
 

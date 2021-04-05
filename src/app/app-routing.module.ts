@@ -7,6 +7,7 @@ import {CategoriaDeleteComponent} from "./components/views/categoria/categoria-d
 import {CategoriaUpdateComponent} from "./components/views/categoria/categoria-update/categoria-update.component";
 import {LivroReadComponent} from "./components/views/livro/livro-read/livro-read.component";
 import {LivroCreateComponent} from "./components/views/livro/livro-create/livro-create.component";
+import {LivroUpdateComponent} from "./components/views/livro/livro-update/livro-update.component";
 
 const routes: Routes = [
     {
@@ -36,6 +37,10 @@ const routes: Routes = [
     {
         path: 'categorias/:id/livros/create',
         component: LivroCreateComponent
+    },
+    {
+        path: 'livros/update',
+        component: LivroUpdateComponent
     }
 ];
 

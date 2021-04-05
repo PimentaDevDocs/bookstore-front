@@ -1,5 +1,5 @@
 <form [formGroup]="livroForm">
-    <h1>Criando um novo livro</h1>
+    <h1>Alteração de livro</h1>
     <mat-form-field class="form">
         <mat-label>
             Titulo
@@ -49,11 +49,11 @@
 
     <div class="buttons">
 
-        <button (click)="create()"
+        <button (click)="save()"
                 [disabled]="livroForm.invalid"
                 class="mat-elevation-z8"
                 color="primary"
-                mat-stroked-button>Criar
+                mat-stroked-button>Salvar
         </button>
         <button (click)="cancel()"
                 class="mat-elevation-z8"

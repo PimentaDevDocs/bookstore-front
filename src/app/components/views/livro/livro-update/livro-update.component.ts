@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {LivroModel} from "../livro.model";
-import {ActivatedRoute, Router} from "@angular/router";
-import {LivroService} from "../livro.service";
 import {FormBuilder, ValidationErrors, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {LivroService} from "../livro.service";
 import {Location} from "@angular/common";
 
 @Component({
-    selector: 'app-livro-create',
-    templateUrl: './livro-create.component.html',
-    styleUrls: ['./livro-create.component.css']
+    selector: 'app-livro-update',
+    templateUrl: './livro-update.component.html',
+    styleUrls: ['./livro-update.component.css']
 })
-export class LivroCreateComponent implements OnInit {
+export class LivroUpdateComponent implements OnInit {
 
     livro: LivroModel = {titulo: '', nomeAutor: '', texto: ''}
 
@@ -38,18 +38,18 @@ export class LivroCreateComponent implements OnInit {
         ],
     })
 
-    idCat: string = ''
-
     constructor(
         private router: Router,
-        private route: ActivatedRoute,
         private livroService: LivroService,
         private _location: Location,
-        private fb: FormBuilder) {
+        private fb: FormBuilder
+    ) {
+        const nav = this.router.getCurrentNavigation();
+
+        this.livro = nav?.extras?.state?.livro;
     }
 
     ngOnInit(): void {
-        this.idCat = this.route.snapshot.paramMap.get('id')!
     }
 
     getError = (a: ValidationErrors | null) => {
@@ -67,13 +67,13 @@ export class LivroCreateComponent implements OnInit {
         return false
     }
 
-    create = (): void => {
+    save = (): void => {
 
-        this.livroService.create(this.livro, this.idCat).subscribe(() => {
-            this.livroService.message(`Livro ${this.livro.titulo} adicionado.`)
+        this.livroService.update(this.livro).subscribe(() => {
+            this.livroService.message(`Livro ${this.livro.titulo} alterado.`)
             this.cancel()
         }, () => {
-            this.livroService.message(`Erro ao criar o livro, tente novamente mais tarde.`)
+            this.livroService.message(`Erro ao alterar livro, tente novamente mais tarde.`)
             this.cancel()
         })
     }
@@ -81,4 +81,5 @@ export class LivroCreateComponent implements OnInit {
     cancel = (): void => {
         this._location.back()
     }
+
 }
