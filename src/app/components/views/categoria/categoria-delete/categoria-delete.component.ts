@@ -15,7 +15,10 @@ export class CategoriaDeleteComponent implements OnInit {
         nome: ''
     }
 
-    constructor(private router: Router, private categoriaService: CategoriaService) {
+    constructor(
+        private router: Router,
+        private categoriaService: CategoriaService
+    ) {
 
         const nav = this.router.getCurrentNavigation();
 

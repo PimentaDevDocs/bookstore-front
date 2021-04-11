@@ -40,4 +40,15 @@ export class LivroService {
 
         return this.http.get<LivroModel[]>(url)
     }
+
+    delete = (id: string): Observable<void> => {
+        const url = `${this.baseUrl}/livros/${id}`;
+        return this.http.delete<void>(url);
+    }
+
+    findById = (idLivro: string): Observable<LivroModel> => {
+        const url = `${this.baseUrl}/livros/${idLivro}`
+
+        return this.http.get<LivroModel>(url)
+    }
 }

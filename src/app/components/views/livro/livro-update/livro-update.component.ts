@@ -78,6 +78,10 @@ export class LivroUpdateComponent implements OnInit {
         })
     }
 
+    delete = (): void => {
+
+    }
+
     cancel = (): void => {
         this._location.back()
     }

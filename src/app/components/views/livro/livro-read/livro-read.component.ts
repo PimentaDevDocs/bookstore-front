@@ -40,8 +40,10 @@ export class LivroReadComponent implements OnInit {
 
     }
 
-    delete(row: LivroModel) {
-
+    delete(livro: LivroModel) {
+        this.router.navigateByUrl('livros/delete', {
+            state: {livro: livro}
+        })
     }
 
     addLivro = (): void => {
