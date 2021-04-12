@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LivroModel} from "../livro.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LivroService} from "../livro.service";
+import {Location} from "@angular/common";
 
 @Component({
     selector: 'app-livro-read',
@@ -10,43 +11,33 @@ import {LivroService} from "../livro.service";
 })
 export class LivroReadComponent implements OnInit {
 
-    livros: LivroModel[] = []
+    livro: LivroModel = {
+        nomeAutor: '',
+        texto: '',
+        titulo: ''
+    }
 
-    id: string = '';
-
-    displayedColumns: string[] = ['id', 'titulo', 'livros', 'acoes']
-
-    constructor(private router: Router, private route: ActivatedRoute, private livroService: LivroService) {
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private livroService: LivroService,
+        private _locate: Location
+    ) {
     }
 
     ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id')!
-        this.findAll()
-    }
-
-    findAll = () => {
-
-        this.livroService.findAllByCategoria(this.id)
-            .subscribe(data => {
-                this.livros = data
+        if (this.route.snapshot.paramMap.get('id')) {
+            this.livroService.findById(this.route.snapshot.paramMap.get('id')!).subscribe((data) => {
+                this.livro = data
             })
-
+        } else {
+            this.livroService.message('Selecione um livro para ler.')
+            this.cancel()
+        }
     }
 
-    edit(livro: LivroModel) {
-        this.router.navigateByUrl('livros/update', {
-            state: {livro: livro}
-        })
-
+    cancel = () => {
+        this._locate.back()
     }
 
-    delete(livro: LivroModel) {
-        this.router.navigateByUrl('livros/delete', {
-            state: {livro: livro}
-        })
-    }
-
-    addLivro = (): void => {
-        this.router.navigateByUrl(`categorias/${this.id}/livros/create`)
-    }
 }
